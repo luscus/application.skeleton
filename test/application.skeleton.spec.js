@@ -11,7 +11,7 @@ describe('Applying application mixins:', function(){
     }
   };
 
-  var finder = require('package.module.finder');
+  var finder = require('package.loader');
   finder.mock('application.mixin.config', require('./mocks/application.mixin.config'));
   finder.mock('application.module.crypto', require('./mocks/application.module.crypto'));
 
