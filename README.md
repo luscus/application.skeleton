@@ -45,7 +45,7 @@ This config property is used to set configuration options for modules.
     var config = {
       "prop1": "someValue",
       "prop2": "whatever",
-      modules: {
+      "modules": {
         "application.module.socket": {
           "enableThis": true,
           "portRange": [25000, 25100]
