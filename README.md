@@ -3,7 +3,62 @@
 [![dependencies](https://david-dm.org/luscus/application.skeleton.svg)](https://david-dm.org/luscus/application.skeleton)
 [![devDependency Status](https://david-dm.org/luscus/application.skeleton/dev-status.svg?theme=shields.io)](https://david-dm.org/luscus/application.skeleton#info=devDependencies)
 
-Application Framework base package.
+Application Framework base package: it loads and applies packages to the application object.
+
+I was and still am a big fan of LEGO® and I would like to think that software development should work in the same way.
+[NPM](https://www.npmjs.com) is a great piece box and if we use prototype-less patterns (mixins, ...) we could apply behaviours to our applications
+by expressing them as dependencies...
+
+Example, my application should:
+
+- emit events (install [application.mixin.emitter](https://github.com/luscus/application.mixin.emitter))
+- be a state machine (install [application.mixin.automaton](https://github.com/luscus/application.mixin.automaton))
+- use network communication (install [application.module.socket](https://github.com/luscus/application.module.socket) and any available protocol package)
+
+This way I don't need to implement all this stuff or write code to use libraries: the behaviour is instantly available in the application object.
+I can focus on the application specific code.
+
+
+## Plugin types
+
+### Mixin
+
+Mixins add behaviours to the base application object itself: package name prefix is `application.mixin.`
+
+### module
+
+Modules wrap functionalities related to some specific domain into one property of the base object: package name prefix is `application.module.`
+
+## Usage
+
+## Set Dependency
+
+    npm install application.skeleton
+
+## Configuration
+
+You can optionally pass a configuration that will be stored in the application object in a `config` property.
+
+The structure of the config is up to you and your project, however there is one limitation: `config.modules` is reserved.
+This config property is used to set configuration options for modules.
+
+    var config = {
+      "prop1": "someValue",
+      "prop2": "whatever",
+      modules: {
+        "application.module.socket": {
+          "enableThis": true,
+          "portRange": [25000, 25100]
+        }
+      }
+    };
+
+## Initialise
+
+    var skeleton = require('application.skeleton');
+
+    // load plugins
+    skeleton(application, config);
 
 
 -------------------
