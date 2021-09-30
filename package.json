@@ -10,7 +10,7 @@
     "framework"
   ],
   "dependencies": {
-    "i": "0.3.2",
+    "i": "0.3.7",
     "package.loader": "0.2.1",
     "prototype-less": "0.1.1"
   },
